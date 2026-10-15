@@ -1,0 +1,36 @@
+*{
+  font-family: "Arial", sans-serif;
+  font-size: 16pt;
+}
+
+body{
+  background: #7c7b7b;
+  margin:0
+}
+
+h1{
+  background: #000000;
+  color: #fff;
+  font-size: 32pt;
+  margin: 0;
+  padding: 64px 0;
+  text-align: center
+}
+
+div{
+  margin: 64px auto;
+  width: 320px
+}
+
+input{
+  width: 320px;
+}
+
+button{
+  background: #950011;
+  border: none;
+  color: #fff;
+  display: block;
+  margin: 16px auto;
+  width: 200px
+}
