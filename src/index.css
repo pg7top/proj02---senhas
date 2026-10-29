@@ -1,36 +1,43 @@
-*{
+
+* {
   font-family: "Arial", sans-serif;
   font-size: 16pt;
 }
 
-body{
+body {
   background: #7c7b7b;
-  margin:0
+  margin: 0;
 }
 
-h1{
+h1 {
   background: #000000;
   color: #fff;
   font-size: 32pt;
   margin: 0;
   padding: 64px 0;
-  text-align: center
+  text-align: center;
 }
 
-div{
+div {
   margin: 64px auto;
-  width: 320px
-}
-
-input{
   width: 320px;
 }
 
-button{
+input, select {
+  width: 320px;
+  box-sizing: border-box;
+}
+
+select {
+  display: block;
+  margin: 16px auto;
+}
+
+button {
   background: #950011;
   border: none;
   color: #fff;
   display: block;
   margin: 16px auto;
-  width: 200px
+  width: 200px;
 }

@@ -6,35 +6,75 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h1> Gerando senhas </h1>
+    <h1>Gerando senhas</h1>
     <div>
-      <input type = "text" placeholder = "Aqui vai a senha" name = "senha">
-      <button onClick = "GerarSenha()"> Gerar senha</button>
-      <button onClick = "VerificarSenha()"> Verificar senha</button>
+      <input type="text" placeholder="Aqui vai a senha" name="senha">
+
+      <select id="tamanhoSenha">
+        <option value="6">6 caracteres</option>
+        <option value="7">7 caracteres</option>
+        <option value="8">8 caracteres</option>
+        <option value="9">9 caracteres</option>
+        <option value="10" selected>10 caracteres</option>
+        <option value="11">11 caracteres</option>
+        <option value="12">12 caracteres</option>
+        <option value="13">13 caracteres</option>
+        <option value="14">14 caracteres</option>
+        <option value="15">15 caracteres</option>
+        <option value="16">16 caracteres</option>
+      </select>
+
+      <button onclick="GerarSenha()">Gerar senha</button>
+      <button onclick="VerificarSenha()">Verificar senha</button>
+      <button onclick="CopiarSenha()">Copiar senha</button>
     </div>
-  <script>
-    function GerarSenha(){
-      const entradaSenha = document.querySelector("input")
-      const caracteres = "abcdefghijklmnopqrstuvwxyz"
-      var senha = ""
-      for (var contagem = 0; contagem < 10; contagem++){
-      const aleatorio = Math.floor(Math.random() * caracteres.length)
-      senha += caracteres[aleatorio]
+
+    <script>
+      function GerarSenha() {
+        const entradaSenha = document.querySelector("input")
+        const tamanho = Number(document.querySelector("#tamanhoSenha").value)
+        const caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*"
+        var senha = ""
+
+        for (var contagem = 0; contagem < tamanho; contagem++) {
+          const aleatorio = Math.floor(Math.random() * caracteres.length)
+          senha += caracteres[aleatorio]
+        }
+
+        entradaSenha.value = senha
       }
-    entradaSenha.value = senha
-    }
-    function VerificarSenha(){
-      const entradaSenha = document.querySelector("input")
-      const titulo = document.querySelector("h1")
-      const tamanho = entradaSenha.value.length
-      if(tamanho < 4)
-        titulo.innerHTML = "Senha curta!"
-      else if(tamanho < 8 )
-        titulo.innerHTML = "Senha média!"
-      else
-        titulo.innerHTML = "Senha longa!"  
-    }
-    
-  </script>
+
+      function VerificarSenha() {
+        const entradaSenha = document.querySelector("input")
+        const titulo = document.querySelector("h1")
+        const tamanho = entradaSenha.value.length
+
+        if (tamanho >= 12)
+          titulo.innerHTML = "Senha excelente!"
+        else if (tamanho < 4)
+          titulo.innerHTML = "Senha curta!"
+        else if (tamanho < 8)
+          titulo.innerHTML = "Senha média!"
+        else
+          titulo.innerHTML = "Senha longa!"
+      }
+
+      async function CopiarSenha() {
+        const entradaSenha = document.querySelector("input")
+        const titulo = document.querySelector("h1")
+
+        if (entradaSenha.value.length === 0) {
+          titulo.innerHTML = "Primeiro gere a senha!!!"
+          return
+        }
+
+        try {
+          await navigator.clipboard.writeText(entradaSenha.value)
+          titulo.innerHTML = "Senha copiada!!!"
+        } catch (erro) {
+          titulo.innerHTML = "Não foi possível copiar essa senha, tente novamente..."
+        }
+      }
+    </script>
   </body>
 </html>
